@@ -12,6 +12,7 @@ public class Main {
                 // També es pot fer servir buildDungeonMaze per escollir l'altre tipus de mapa
                 .buildDungeonMaze();
         // Observació: La classe DemoMazeSolver implementa la interfície MazeSolver
+
         maze.run();
     }
 }
