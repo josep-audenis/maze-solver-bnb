@@ -4,7 +4,6 @@ import edu.salle.url.maze.business.enums.Direction;
 import edu.salle.url.maze.presentation.MazeRenderer;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -17,6 +16,7 @@ public class DemoMazeSolver implements MazeSolver {
         List<Integer> start = new ArrayList<>();
         List<Integer> end = new ArrayList<>();
         List<Direction> best = new ArrayList<>();
+
 
         for (int i = 0; i < cells.length; i++){
             for (int j = 0; j < cells[i].length; j++){
@@ -36,88 +36,27 @@ public class DemoMazeSolver implements MazeSolver {
         while (!queue.isEmpty()){
             Nodes config = queue.poll();
 
+
             List<Nodes> successors = config.expand(cells);
 
             for (Nodes successor : successors){
+                //best = pathToDirections(successor.getPath());
+                //mazeRenderer.render(cells, best,1);
                 if (successor.isFinished()){
 
                     if (successor.cost() < upper){
                         upper = successor.cost();
                         best = pathToDirections(successor.getPath());
-                        mazeRenderer.render(cells, best);
+                        mazeRenderer.render(cells, best,1000);
                     }
                 } else {
                     if (successor.cost() < upper){
                         queue.offer(successor);
+                        System.out.println(successor.cost() + " - " + upper);
                     }
                 }
             }
         }
-
-
-
-
-
-        /*
-        Nodes startNode;
-        List<Integer> end = new ArrayList<>();
-        List<Direction> directions;
-        PriorityQueue<Nodes> queue = new PriorityQueue<>(Comparator.comparingInt(a -> a.getPath().size()));
-        for (int i = 0; i < cells.length; i++){
-            for (int j = 0; j < cells[i].length; j++){
-                if (cells[i][j] == Cell.START){
-                    startNode = new Nodes(i,j, new ArrayList<>());
-                    queue.add(startNode);
-                }
-                if (cells[i][j] == Cell.EXIT){
-                    end.add(i);
-                    end.add(j);
-                }
-            }
-        }
-
-        while(!queue.isEmpty()){
-            Nodes current = queue.poll();
-            if (current.getX() == end.get(0) && current.getY() == end.get(1)){
-                directions = pathToDirections(current.getPath());
-                mazeRenderer.render(cells, directions, 10);
-                return directions;
-            }
-            int x = 0;
-            int y = 0;
-            for (Direction dir : Direction.values()){
-                switch (dir){
-                    case UP:
-                        x = current.getX();
-                        y = current.getY() - 1;
-                        break;
-                    case DOWN:
-                        x = current.getX();
-                        y = current.getY() + 1;
-                        break;
-                    case LEFT:
-                        x = current.getX() - 1;
-                        y = current.getY();
-                        break;
-                    case RIGHT:
-                        x = current.getX() + 1;
-                        y = current.getY();
-                        break;
-                }
-                List<Integer> cords = new ArrayList<>();
-                cords.add(x);
-                cords.add(y);
-                if (x < cells.length && y < cells[0].length && cells[x][y] != Cell.WALL && !current.getPath().contains(cords)){
-                    Nodes newNode = new Nodes(x, y, current.getPath());
-                    if (!queue.contains(newNode)){
-                        queue.add(newNode);
-                    }
-                }
-            }
-        }
-
-         */
-
         mazeRenderer.render(cells, best);
         return best;
     }
@@ -125,7 +64,6 @@ public class DemoMazeSolver implements MazeSolver {
     public List<Direction> pathToDirections(List<List<Integer>> path){
         List<Direction> directions = new ArrayList<>();
         List<Integer> previous = new ArrayList<>();
-        System.out.println(path);
         for (List<Integer> cords : path){
             if (cords.equals(path.get(0))) {
                 previous = cords;
@@ -140,7 +78,6 @@ public class DemoMazeSolver implements MazeSolver {
             if (y_dif < 0) directions.add(Direction.DOWN);
             previous = cords;
         }
-        System.out.println(directions);
         return directions;
     }
 

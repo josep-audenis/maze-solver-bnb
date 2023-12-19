@@ -4,10 +4,10 @@ import edu.salle.url.maze.MazeBuilder;
 public class Main {
     public static void main(String[] args) {
         Maze maze = new MazeBuilder()
-                .setMazeColumns(10)
-                .setMazeRows(10)
+                .setMazeColumns(20)
+                .setMazeRows(20)
                 // Opcional, per fixar un input en comptes d'obtenir-ne un d'aleatori cada cop
-                .setSeed(45)
+                .setSeed(5)
                 .setMazeSolver(new DemoMazeSolver())
                 // També es pot fer servir buildDungeonMaze per escollir l'altre tipus de mapa
                 .buildCaveMaze();

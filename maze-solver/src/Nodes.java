@@ -61,14 +61,10 @@ public class Nodes implements Comparable<Nodes>{
     }
 
     public int cost(){
-        return path.size() - manhattan(node,end);
+        return path.size() + manhattan(node,end);
     }
 
     public boolean isFinished(){
-        boolean what = false;
-        if (path.contains(end)){
-            what = true;
-        }
         return path.contains(end);
     }
 
