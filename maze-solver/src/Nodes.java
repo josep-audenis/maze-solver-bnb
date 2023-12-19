@@ -7,7 +7,7 @@ import java.util.List;
 public class Nodes implements Comparable<Nodes>{
     private final List<Integer> node;
     private final List<List<Integer>> path;
-    private List<Integer> end;
+    private final List<Integer> end;
 
     public Nodes(List<Integer> start, List<List<Integer>> path, List<Integer> end){
         this.node = start;
@@ -21,12 +21,7 @@ public class Nodes implements Comparable<Nodes>{
         this.path = new ArrayList<>(that.path);
         this.end = that.end;
     }
-    public int getX(){
-        return node.get(0);
-    }
-    public int getY(){
-        return node.get(1);
-    }
+
     public List<List<Integer>> getPath(){
         return path;
     }

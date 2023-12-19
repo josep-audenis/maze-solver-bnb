@@ -17,7 +17,6 @@ public class DemoMazeSolver implements MazeSolver {
         List<Integer> end = new ArrayList<>();
         List<Direction> best = new ArrayList<>();
 
-
         for (int i = 0; i < cells.length; i++){
             for (int j = 0; j < cells[i].length; j++){
                 if (cells[i][j] == Cell.START){
@@ -36,7 +35,6 @@ public class DemoMazeSolver implements MazeSolver {
         while (!queue.isEmpty()){
             Nodes config = queue.poll();
 
-
             List<Nodes> successors = config.expand(cells);
 
             for (Nodes successor : successors){
@@ -52,7 +50,7 @@ public class DemoMazeSolver implements MazeSolver {
                 } else {
                     if (successor.cost() < upper){
                         queue.offer(successor);
-                        System.out.println(successor.cost() + " - " + upper);
+                        //System.out.println(successor.cost() + " - " + upper);
                     }
                 }
             }
