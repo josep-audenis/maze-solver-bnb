@@ -38,8 +38,6 @@ public class DemoMazeSolver implements MazeSolver {
             List<Nodes> successors = config.expand(cells);
 
             for (Nodes successor : successors){
-                //best = pathToDirections(successor.getPath());
-                //mazeRenderer.render(cells, best,1);
                 if (successor.isFinished()){
 
                     if (successor.cost() < upper){
@@ -50,7 +48,7 @@ public class DemoMazeSolver implements MazeSolver {
                 } else {
                     if (successor.cost() < upper){
                         queue.offer(successor);
-                        //System.out.println(successor.cost() + " - " + upper);
+                        //mazeRenderer.render(cells, pathToDirections(successor.getPath()),1);
                     }
                 }
             }

@@ -94,6 +94,6 @@ public class Nodes implements Comparable<Nodes>{
 
     @Override
     public int compareTo(Nodes that) {
-        return this.cost() - that.cost();
+        return this.manhattan(this.node, this.end) - that.manhattan(that.node, that.end);
     }
 }
