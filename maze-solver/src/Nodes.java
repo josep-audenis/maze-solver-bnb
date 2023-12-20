@@ -8,7 +8,7 @@ public class Nodes implements Comparable<Nodes>{
     private final List<Integer> node;
     private final List<List<Integer>> path;
     private final List<Integer> end;
-    private boolean[][] visited;
+    private final boolean[][] visited;
 
     public Nodes(List<Integer> start, List<List<Integer>> path, List<Integer> end, int sizeX, int sizeY){
         this.node = start;
@@ -96,6 +96,6 @@ public class Nodes implements Comparable<Nodes>{
 
     @Override
     public int compareTo(Nodes that) {
-        return this.manhattan(this.node, this.end) - that.manhattan(that.node, that.end);
+        return this.cost() - that.cost();
     }
 }

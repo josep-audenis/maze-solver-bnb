@@ -44,6 +44,7 @@ public class DemoMazeSolver implements MazeSolver {
                         upper = successor.cost();
                         best = pathToDirections(successor.getPath());
                         mazeRenderer.render(cells, best,1000);
+                        System.out.println(upper);
                     }
                 } else {
                     if (successor.cost() < upper){
@@ -54,6 +55,7 @@ public class DemoMazeSolver implements MazeSolver {
             }
         }
         mazeRenderer.render(cells, best);
+        System.out.println(best.size());
         return best;
     }
 
