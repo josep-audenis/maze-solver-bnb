@@ -29,7 +29,7 @@ public class DemoMazeSolver implements MazeSolver {
                 }
             }
         }
-        first = new Nodes(start, new ArrayList<>(), end);
+        first = new Nodes(start, new ArrayList<>(), end, cells.length, cells[0].length);
         queue.offer(first);
 
         while (!queue.isEmpty()){
